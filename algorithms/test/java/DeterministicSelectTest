@@ -1,0 +1,21 @@
+package algorithms;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DeterministicSelectTest {
+
+    @Test
+    public void testMedian() {
+        int[] arr = {7, 2, 1, 6, 3, 5, 4};
+        int median = DeterministicSelect.select(arr, arr.length / 2);
+        assertEquals(4, median);
+    }
+
+    @Test
+    public void testSmallArray() {
+        int[] arr = {1, 2, 3};
+        int res = DeterministicSelect.select(arr, 0);
+        assertEquals(1, res);
+    }
+}
