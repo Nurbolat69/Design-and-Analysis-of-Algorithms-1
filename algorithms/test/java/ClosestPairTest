@@ -1,0 +1,21 @@
+package algorithms;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ClosestPairTest {
+
+    @Test
+    public void testSimplePoints() {
+        double[][] points = {{0,0}, {3,4}, {1,1}, {2,2}};
+        double d = ClosestPair.closestPair(points);
+        assertEquals(Math.sqrt(2), d, 0.0001);
+    }
+
+    @Test
+    public void testTwoPoints() {
+        double[][] points = {{0,0}, {5,12}};
+        double d = ClosestPair.closestPair(points);
+        assertEquals(13.0, d, 0.0001);
+    }
+}
