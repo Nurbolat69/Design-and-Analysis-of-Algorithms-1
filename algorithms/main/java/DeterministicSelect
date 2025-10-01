@@ -1,0 +1,32 @@
+package algorithms;
+
+import java.util.Arrays;
+
+public class DeterministicSelect {
+    public static int select(int[] arr, int k) {
+        if (arr.length == 1) return arr[0];
+        int pivot = medianOfMedians(arr);
+        int[] left = Arrays.stream(arr).filter(x -> x < pivot).toArray();
+        int[] right = Arrays.stream(arr).filter(x -> x > pivot).toArray();
+        int countPivot = arr.length - left.length - right.length;
+
+        if (k < left.length) return select(left, k);
+        else if (k < left.length + countPivot) return pivot;
+        else return select(right, k - left.length - countPivot);
+    }
+
+    private static int medianOfMedians(int[] arr) {
+        if (arr.length <= 5) {
+            Arrays.sort(arr);
+            return arr[arr.length / 2];
+        }
+        int n = (arr.length + 4) / 5;
+        int[] medians = new int[n];
+        for (int i = 0; i < n; i++) {
+            int[] group = Arrays.copyOfRange(arr, i * 5, Math.min(arr.length, (i + 1) * 5));
+            Arrays.sort(group);
+            medians[i] = group[group.length / 2];
+        }
+        return medianOfMedians(medians);
+    }
+}
