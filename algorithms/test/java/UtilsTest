@@ -1,0 +1,22 @@
+package algorithms;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class UtilsTest {
+
+    @Test
+    public void testRandomArraySize() {
+        int[] arr = Utils.randomArray(10, 100);
+        assertEquals(10, arr.length);
+    }
+
+    @Test
+    public void testRandomArrayBound() {
+        int[] arr = Utils.randomArray(5, 10);
+        for (int num : arr) {
+            assertTrue(num >= 0 && num < 10);
+        }
+    }
+}
+<depen
